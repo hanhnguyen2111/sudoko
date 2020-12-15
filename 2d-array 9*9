@@ -1,0 +1,104 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <netinet/ip.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <arpa/inet.h>
+#include <time.h>
+
+/* function to generate and return random numbers */
+int * getRandom( )
+{
+
+    static int  mat[9][9];
+
+    /* set the seed */
+    srand( (unsigned)time( NULL ) );
+
+    int q1[3][3]= {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    int q2[3][3]= {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    int q3[3][3]= {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    int q4[3][3]= {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    int q5[3][3]= {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    int q6[3][3]= {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    int q7[3][3]= {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    int q8[3][3]= {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    int q9[3][3]= {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+
+    for (int zaehler = 0; zaehler < 10; zaehler++)
+    {
+        int zufall1 = (rand() % 3);
+        int zufall2 = (rand() % 3);
+        int zufall3 = (rand() % 3);
+        int zufall4 = (rand() % 3);
+        int zufall5 = (rand() % 3);
+        int zufall6 = (rand() % 3);
+        int zufall7 = (rand() % 3);
+        int zufall8 = (rand() % 3);
+        int tmp1 = q1[zufall1][zufall2];
+        q1[zufall1][zufall2]=q1[zufall3][zufall4];
+        q1[zufall3][zufall4]=tmp1;
+        int tmp2 = q2[zufall5][zufall6];
+        q2[zufall5][zufall6]=q2[zufall7][zufall8];
+        q2[zufall7][zufall8]=tmp2;
+        int tmp3 = q3[zufall5][zufall2];
+        q3[zufall5][zufall2]=q3[zufall8][zufall1];
+        q3[zufall8][zufall1]=tmp3;
+        int tmp4 = q4[zufall7][zufall7];
+        q4[zufall7][zufall7]=q4[zufall6][zufall3];
+        q4[zufall6][zufall3]=tmp4;
+        int tmp5 = q5[zufall8][zufall2];
+        q5[zufall8][zufall2]=q5[zufall1][zufall3];
+        q5[zufall1][zufall3]=tmp5;
+        int tmp6 = q6[zufall4][zufall5];
+        q6[zufall4][zufall5]=q6[zufall3][zufall2];
+        q6[zufall3][zufall2]=tmp6;
+        int tmp7 = q7[zufall8][zufall7];
+        q7[zufall8][zufall7]=q7[zufall3][zufall3];
+        q7[zufall3][zufall3]=tmp7;
+        int tmp8 = q8[zufall1][zufall4];
+        q8[zufall1][zufall4]=q8[zufall8][zufall4];
+        q8[zufall8][zufall4]=tmp8;
+        int tmp9 = q9[zufall6][zufall4];
+        q9[zufall6][zufall4]=q9[zufall7][zufall6];
+        q9[zufall7][zufall6]=tmp9;
+    }
+
+    mat[9][9] = {{q1[0][0],q1[0][1],q1[0][2],q2[0][0],q2[0][1],q2[0][2],q3[0][0],q3[0][1],q3[0][2]},
+                {q1[1][0],q1[1][1],q1[1][2],q2[1][0],q2[1][1],q2[1][2],q3[1][0],q3[1][1],q3[1][2]},
+                {q1[2][0],q1[2][1],q1[2][2],q2[2][0],q2[2][1],q2[2][2],q3[2][0],q3[2][1],q3[2][2]},
+                {q4[0][0],q4[0][1],q4[0][2],q5[0][0],q5[0][1],q5[0][2],q6[0][0],q6[0][1],q6[0][2]},
+                {q4[1][0],q4[1][1],q4[1][2],q5[1][0],q5[1][1],q5[1][2],q6[1][0],q6[1][1],q6[1][2]},
+                {q4[2][0],q4[2][1],q4[2][2],q5[2][0],q5[2][1],q5[2][2],q6[2][0],q6[2][1],q6[2][2]},
+                {q7[0][0],q7[0][1],q7[0][2],q8[0][0],q8[0][1],q8[0][2],q9[0][0],q9[0][1],q9[0][2]},
+                {q7[1][0],q7[1][1],q7[1][2],q8[1][0],q8[1][1],q8[1][2],q9[1][0],q9[1][1],q9[1][2]},
+                {q7[2][0],q7[2][1],q7[2][2],q8[2][0],q8[2][1],q8[2][2],q9[2][0],q9[2][1],q9[2][2]}};
+
+    return mat;
+
+}
+
+/* main function to call above defined function */
+int main ()
+{
+
+    /* a pointer to an int */
+    int *p;
+
+    p = getRandom();
+
+
+
+    for ( int i = 0; i < 3; i++ )
+    {
+        for(int j=0; j< 3; j++)
+        {
+            printf( "*(%d)(%d) : %d \n", i,j, *(p + i*9 +j));
+        }
+    }
+
+
+    return 0;
+}
+
