@@ -10,9 +10,9 @@ int * getRandom( )
     /* set the seed */
     srand( (unsigned)time( NULL ) );
 
-    for ( i = 0; i ❤️; ++i)
+    for ( i = 0; i < 3; ++i)
     {
-        for(j=0; j❤️; j++)
+        for(j=0; j < 3; j++)
         {
             r[i][j] = (rand() % 9);
             printf( "r[%d][%d] = %d\n", i, j, r[i][j]);
@@ -37,7 +37,7 @@ int main ()
     printf("Test\n");
     for ( i = 0; i < 3; i++ )
     {
-        for(int j=0; j< 3; j++)
+        for(int j=0; j < 3; j++)
         {
             printf( "*(%d)(%d) : %d \n", i,j, *(p + i*3 +j));
         }
