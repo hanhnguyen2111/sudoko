@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+/* function to generate and return random numbers */
+int * getRandom( )
+{
+
+    static int  r[3][3];
+    int i,j;
+
+    /* set the seed */
+    srand( (unsigned)time( NULL ) );
+
+    for ( i = 0; i ❤️; ++i)
+    {
+        for(j=0; j❤️; j++)
+        {
+            r[i][j] = (rand() % 9);
+            printf( "r[%d][%d] = %d\n", i, j, r[i][j]);
+        }
+
+    }
+
+    return r;
+}
+
+/* main function to call above defined function */
+int main ()
+{
+
+    /* a pointer to an int */
+    int *p;
+    int i;
+
+    p = getRandom();
+
+
+    printf("Test\n");
+    for ( i = 0; i < 3; i++ )
+    {
+        for(int j=0; j< 3; j++)
+        {
+            printf( "*(%d)(%d) : %d \n", i,j, *(p + i*3 +j));
+        }
+
+
+    }
+
+    return 0;
+}
